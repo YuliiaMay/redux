@@ -1,10 +1,11 @@
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { Layout } from '../../layout/Layout/Layout';
-import { routes } from '../../routes';
-import { Home, Options } from '../../views';
+import React from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
+import { Layout } from "../../layout/Layout/Layout";
+import { routes } from "../../routes";
+import { Home, Options } from "../../views";
 
 export const App = () => {
+  console.log("helo");
   return (
     <>
       <Routes>
@@ -13,7 +14,7 @@ export const App = () => {
           <Route path={routes.OPTIONS} element={<Options />} />
         </Route>
 
-        <Route path='*' element={<Navigate to={routes.HOME} replace />} />
+        <Route path="*" element={<Navigate to={routes.HOME} replace />} />
       </Routes>
     </>
   );
