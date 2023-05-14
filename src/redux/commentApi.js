@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const API_ENDPOINT = '/comments';
-const BASE_URL = '';
+const BASE_URL = 'https://64511b10a3221969115af51b.mockapi.io/';
 
 export const commentApi = createApi({
   reducerPath: 'comments',
@@ -9,7 +9,11 @@ export const commentApi = createApi({
     baseUrl: BASE_URL,
   }),
   tagTypes: ['Comments'],
-  endpoints: (builder) => ({}),
+  endpoints: (builder) => ({
+    getComments: builder.query({
+      query: () => API_ENDPOINT,
+    }),
+  }),
 });
 
-export const {} = commentApi;
+export const {useGetCommentsQuery} = commentApi;
