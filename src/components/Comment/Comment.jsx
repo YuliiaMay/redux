@@ -13,6 +13,7 @@ export const Comment = ({
   thumbsUp,
   thumbsDown,
   id,
+  onUpdateComment
 }) => {
   return (
     <li className={styles.card}>
@@ -31,11 +32,11 @@ export const Comment = ({
           <span className={styles.date}>{formatDateToNow(createdAt)}</span>
 
           <div className={styles.buttonBox}>
-            <Button counter={thumbsUp} id={id}>
+            <Button counter={thumbsUp} id={id} onUpdateComment={onUpdateComment}>
               <TiThumbsUp className={styles.icon} />
             </Button>
 
-            <Button counter={thumbsDown} role='thumbsDown' id={id}>
+            <Button counter={thumbsDown} role='thumbsDown' id={id} onUpdateComment={onUpdateComment}>
               <TiThumbsDown className={styles.icon} />
             </Button>
           </div>

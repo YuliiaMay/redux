@@ -2,15 +2,31 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import styles from './Button.module.css';
+import { useUpdateCommentsMutation } from '../../redux/commentApi';
 
-export const Button = ({ children, counter, role = 'thumbsUp', id }) => {
+export const Button = ({ children, counter, role = 'thumbsUp', id, onUpdateComment}) => {
+  const [updateLike, {isLoading}] = useUpdateCommentsMutation();
+  
   const variants = {
     [styles.thumbsUp]: role === 'thumbsUp',
     [styles.thumbsDown]: role === 'thumbsDown',
   };
 
-  const onBtnHandleClick = () => {
-    console.log('click');
+  const onBtnHandleClick = async () => {
+    try {
+      let newCounter = 0;
+      if (role === 'thumbsUp') {
+        newCounter = counter + 1;
+      } else {
+        newCounter = counter - 1;
+      }
+
+      onUpdateComment({id, [role]: newCounter})
+      await updateLike({id, [role]: newCounter})
+    } catch (error) {
+      
+    }
+
   };
 
   return (

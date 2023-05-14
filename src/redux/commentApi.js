@@ -20,7 +20,14 @@ export const commentApi = createApi({
         body,
       }),
     }),
+    updateComments: builder.mutation({
+      query: ({id, ...body}) => ({
+        url: `${API_ENDPOINT}/${id}`,
+        method: "PUT",
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useGetCommentsQuery, useAddPostMutation } = commentApi;
+export const { useGetCommentsQuery, useAddPostMutation, useUpdateCommentsMutation } = commentApi;
